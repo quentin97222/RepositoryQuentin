@@ -6,5 +6,7 @@ public class classTest1 {
 
 	// Test branch
 
+	// Test Branch 2
+
 	private String nom;
 }
