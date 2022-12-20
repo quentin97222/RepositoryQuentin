@@ -7,8 +7,5 @@ public class classTest1 {
 
 	// Test branch
 
-	// Test Branch 2
-
-	//modification sur le main
 	private String nom;
 }
