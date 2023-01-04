@@ -1,5 +1,7 @@
 package eshop.repository;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 import eshop.entity.Client;
 import eshop.entity.Commande;
+import eshop.entity.Fournisseur;
 
 public interface CommandeRepository extends JpaRepository<Commande, Long> {
 
@@ -20,4 +23,7 @@ public interface CommandeRepository extends JpaRepository<Commande, Long> {
 	@Modifying
 	@Transactional
 	Commande findByClient(Client client);
+	
+	@Query("select f from Fournisseur f left join fetch f.produits where f.id=:id")
+	Optional<Commande> findByIdFetchAchats(Long id);
 }

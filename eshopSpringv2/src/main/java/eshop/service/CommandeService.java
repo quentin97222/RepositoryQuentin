@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import eshop.entity.Commande;
 import eshop.entity.Fournisseur;
@@ -16,7 +17,7 @@ import eshop.repository.FournisseurRepository;
 
 
 
-
+@Service
 public class CommandeService {
 
 	
@@ -40,12 +41,12 @@ public class CommandeService {
 			throw new CommandeException("formateur null");
 		}
 	}
-	
+
 	public Commande getById(Long id) {
 		if (id == null) {
 			throw new IdException();
 		}
-		return commandeRepo.findById(id).orElseThrow(() -> {
+		return commandeRepo.findByIdFetchAchats(id).orElseThrow(() -> {
 			throw new CommandeException("formateur inconnu");
 		});
 	}
