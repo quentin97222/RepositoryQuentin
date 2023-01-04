@@ -49,7 +49,7 @@ public class JpaConfig {
 		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
 		properties.setProperty("hibernate.format_sql", "true");
-		properties.setProperty("hibernate.show_sql", "false");
+		properties.setProperty("hibernate.show_sql", "true");
 		emf.setJpaProperties(properties);
 		return emf;
 	}
