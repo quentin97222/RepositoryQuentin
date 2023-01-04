@@ -17,17 +17,19 @@ import javax.persistence.Table;
 @AttributeOverride(name = "adresse.rue", column = @Column(name = "customer_street", length = 255))
 @AttributeOverride(name = "adresse.codePostal", column = @Column(name = "customer_zip_code", length = 50))
 @AttributeOverride(name = "adresse.ville", column = @Column(name = "customer_city", length = 255))
-@AttributeOverride(name="id",column = @Column(name="customer_id"))
-@AttributeOverride(name="nom",column = @Column(name="customer_last_name",length = 255))
-@AttributeOverride(name="email",column = @Column(name="customer_email",length = 255))
-@Table(name="customer")
-@SequenceGenerator(name="seqCompte",sequenceName = "customer_id_seq",initialValue = 50,allocationSize = 1)
+@AttributeOverride(name = "id", column = @Column(name = "customer_id"))
+@AttributeOverride(name = "nom", column = @Column(name = "customer_last_name", length = 255))
+@AttributeOverride(name = "email", column = @Column(name = "customer_email", length = 255))
+@Table(name = "customer")
+@SequenceGenerator(name = "seqCompte", sequenceName = "customer_id_seq", initialValue = 50, allocationSize = 1)
 public class Client extends Compte {
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String prenom;
-	@Column(name="registry")
+	@Column(name = "password")
+	private String password;
+	@Column(name = "registry")
 	private LocalDate dateInscription;
-	@Column(name="civility",length = 5)
+	@Column(name = "civility", length = 5)
 	@Enumerated(EnumType.STRING)
 	private Civilite civilite;
 	@OneToMany(mappedBy = "client")
@@ -76,6 +78,13 @@ public class Client extends Compte {
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-	
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }
